@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Desafio Conta Corrente</string>
+    <string name="progress_loading">Loading...</string>
+    <string name="senha">Senha</string>
+    <string name="email">Email</string>
+    <string name="acessar">Acessar</string>
+
+    <!-- Titles -->
+    <string name="title_acesso_a_conta">Acesso a Conta</string>
+    <string name="title_transferencia">Transferência</string>
+    <string name="title_confirmar_transferencia">Confirmar Transferência</string>
+    <string name="title_resumo_transferencia">Resumo Transferência</string>
+    <string name="title_extrato">Extrato</string>
+    <string name="title_sair">Sair</string>
+
+    <string name="error_inactive_user">Usuário inativo!</string>
+    <string name="error_user_not_found">Email ou senha incorretos!</string>
+    <string name="error_search">Erro ao realizar a busca!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ola">Olá,</string>
+    <string name="saldo">Saldo:</string>
+    <string name="rs">R$</string>
+    <string name="saldo_valor">00,00</string>
+</resources>
