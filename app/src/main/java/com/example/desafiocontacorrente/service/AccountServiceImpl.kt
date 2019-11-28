@@ -1,6 +1,7 @@
 package com.example.desafiocontacorrente.service
 
 import com.example.desafiocontacorrente.R
+import com.example.desafiocontacorrente.model.Banking
 import com.example.desafiocontacorrente.model.Status
 import com.example.desafiocontacorrente.model.User
 import retrofit2.Call
@@ -50,6 +51,30 @@ class AccountServiceImpl : AccountServiceApi{
                 }
             }
             override fun onFailure(call: Call<User>, t: Throwable) {
+                callback.onError(R.string.error_search)
+            }
+        })
+    }
+
+    override fun getBankStatement(
+        userId: String,
+        callback: AccountServiceApi.AccountServiceCallback<List<Banking>>
+    ) {
+        val callBankStatement = mRetrofit.getBankStatement(userId)
+        callBankStatement.enqueue(object : Callback<List<Banking>>{
+            override fun onResponse(call: Call<List<Banking>>, response: Response<List<Banking>>) {
+                if (response.code() == 200){
+                    val result: List<Banking>
+                    try {
+                        result = response.body()!!
+                        callback.onLoaded(result)
+                    }catch (e: Exception){
+                        callback.onError(R.string.error_search)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<List<Banking>>, t: Throwable) {
                 callback.onError(R.string.error_search)
             }
         })

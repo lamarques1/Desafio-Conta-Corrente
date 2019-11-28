@@ -1,5 +1,6 @@
 package com.example.desafiocontacorrente.service
 
+import com.example.desafiocontacorrente.model.Banking
 import com.example.desafiocontacorrente.model.Status
 import com.example.desafiocontacorrente.model.User
 import retrofit2.http.POST
@@ -15,4 +16,7 @@ interface AccountServiceApi {
 
     @POST("./get-user")
     fun getUser(email: String, callback: AccountServiceCallback<User>)
+
+    @POST("./get-bank-statement")
+    fun getBankStatement(userId: String, callback: AccountServiceCallback<List<Banking>>)
 }

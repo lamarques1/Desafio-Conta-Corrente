@@ -1,5 +1,7 @@
 package com.example.desafiocontacorrente.login
 
+import android.content.Context
+
 interface LoginContract {
     interface View {
         fun setPresenter()
@@ -9,6 +11,6 @@ interface LoginContract {
         fun authUser()
     }
     interface Presenter{
-        fun authUser(email : String, password: String)
+        fun authUser(email: String, password: String)
     }
 }

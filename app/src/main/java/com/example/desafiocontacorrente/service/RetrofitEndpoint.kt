@@ -1,5 +1,6 @@
 package com.example.desafiocontacorrente.service
 
+import com.example.desafiocontacorrente.model.Banking
 import com.example.desafiocontacorrente.model.Status
 import com.example.desafiocontacorrente.model.User
 import retrofit2.Call
@@ -14,5 +15,10 @@ interface RetrofitEndpoint {
 
     @FormUrlEncoded
     @POST("./get-user")
-    fun getUser(@Field("email") email: String) : Call<User>
+    fun getUser(@Field("email") email: String): Call<User>
+
+    @FormUrlEncoded
+    @POST("./get-bank-statement")
+    fun getBankStatement(@Field("id_user") userId: String): Call<List<Banking>>
+
 }

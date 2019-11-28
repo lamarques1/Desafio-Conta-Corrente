@@ -5,14 +5,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
 import com.example.desafiocontacorrente.R
-import com.example.desafiocontacorrente.transacional.MainLogadoActivity
+import com.example.desafiocontacorrente.transacional.MainActivity
 import com.example.desafiocontacorrente.utils.BaseActivity
 
 class LoginView : BaseActivity(), LoginContract.View {
 
-//    private lateinit var toolbar: Toolbar
     private lateinit var presenter: LoginContract.Presenter
 
     private lateinit var btnLogin: Button
@@ -26,10 +24,7 @@ class LoginView : BaseActivity(), LoginContract.View {
         setPresenter()
         initViews()
         initListeners()
-        //TODO: Remover referencias ao toolbar (xml tbm)
         supportActionBar?.hide()
-        /*toolbar.title = getString(R.string.title_acesso_a_conta)
-        setSupportActionBar(toolbar)*/
     }
 
     override fun setPresenter() {
@@ -37,7 +32,6 @@ class LoginView : BaseActivity(), LoginContract.View {
     }
 
     override fun initViews() {
-//        toolbar = findViewById(R.id.toolbar)
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
         btnLogin = findViewById(R.id.btnLogin)
@@ -45,15 +39,14 @@ class LoginView : BaseActivity(), LoginContract.View {
 
     override fun initListeners() {
         btnLogin.setOnClickListener {
-            //TODO: receber dados do editText
-            presenter.authUser("lamarques.oliveira@evosystems.com.br", "123456")
+            presenter.authUser(etEmail.text.toString().trim(), etPassword.text.toString().trim())
         }
     }
 
     override fun authUser() {
-        val mainLogadoIntent = Intent(this, MainLogadoActivity::class.java)
-        mainLogadoIntent.putExtra("email", "lamarques.oliveira@evosystems.com.br")
-        startActivity(mainLogadoIntent)
+        val homeIntent = Intent(this, MainActivity::class.java)
+        homeIntent.putExtra("email", etEmail.text.toString().trim())
+        startActivity(homeIntent)
     }
 
     override fun displayErrorMessage(errorId: Int) {

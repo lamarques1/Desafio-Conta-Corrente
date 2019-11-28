@@ -1,15 +1,18 @@
-package com.example.desafiocontacorrente.transacional.telainicial
+package com.example.desafiocontacorrente.transacional.home
 
+import android.widget.Toast
 import com.example.desafiocontacorrente.model.User
 import com.example.desafiocontacorrente.service.AccountServiceApi
 import com.example.desafiocontacorrente.service.AccountServiceImpl
+import com.example.desafiocontacorrente.utils.SharedPrefUtil
 
-class TelaInicialPresenter(val view: TelaInicialContract.View) : TelaInicialContract.Presenter {
+class HomePresenter(val view: HomeContract.View) : HomeContract.Presenter {
 
-    override fun getUserInfo(email: String) {
+    override fun getUserInfo() {
+        val user = SharedPrefUtil().getUser(view.getContext())
         val webClient = AccountServiceImpl()
 
-        webClient.getUser(email, object : AccountServiceApi.AccountServiceCallback<User>{
+        webClient.getUser(user.email, object : AccountServiceApi.AccountServiceCallback<User>{
             override fun onLoaded(result: User) {
                 view.bindUserInfo(result)
             }

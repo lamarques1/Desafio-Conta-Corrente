@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@android:color/white"
-    tools:context=".transacional.MainLogadoActivity">
+    tools:context=".transacional.MainActivity">
 
 
 

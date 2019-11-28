@@ -1,7 +1,8 @@
-package com.example.desafiocontacorrente.transacional.telainicial
+package com.example.desafiocontacorrente.transacional.home
 
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,25 +10,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 
 import com.example.desafiocontacorrente.R
 import com.example.desafiocontacorrente.login.LoginView
 import com.example.desafiocontacorrente.model.User
+import com.example.desafiocontacorrente.transacional.bankstatement.BankStatementFragment
 import com.example.desafiocontacorrente.utils.BaseFragment
 
-/**
- * A simple [Fragment] subclass.
- */
-class TelaInicialFragment(val email: String) : BaseFragment(), TelaInicialContract.View {
+class HomeFragment : BaseFragment(), HomeContract.View {
 
     private lateinit var txtName: TextView
     private lateinit var txtSaldo: TextView
     private lateinit var btnExtrato: Button
     private lateinit var btnTransferir: Button
     private lateinit var btnSair: Button
+    private lateinit var btnRefresh: ImageButton
 
-    private lateinit var presenter: TelaInicialContract.Presenter
+    private lateinit var presenter: HomeContract.Presenter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,26 +36,37 @@ class TelaInicialFragment(val email: String) : BaseFragment(), TelaInicialContra
     ): View? {
         val view = inflater.inflate(R.layout.fragment_tela_inicial, container, false)
 
-        bindViews(view)
+        initViews(view)
         setTitulo("Minha Conta")
         initListeners()
 
         setPresenter()
-        presenter.getUserInfo(email)
+        presenter.getUserInfo()
+
 
         return view
     }
 
-    override fun setPresenter() {
-        presenter = TelaInicialPresenter(this)
+    override fun onResume() {
+        super.onResume()
+        setTitulo(getString(R.string.title_home))
     }
 
-    override fun bindViews(view: View) {
+    override fun setPresenter() {
+        presenter = HomePresenter(this)
+    }
+
+    override fun getContext(): Context {
+        return activity?.applicationContext!!
+    }
+
+    override fun initViews(view: View) {
         txtName = view.findViewById(R.id.txtName)
         txtSaldo = view.findViewById(R.id.txtSaldo)
         btnExtrato = view.findViewById(R.id.btnExtrato)
         btnTransferir = view.findViewById(R.id.btnTransferir)
         btnSair = view.findViewById(R.id.btnSair)
+        btnRefresh = view.findViewById(R.id.btnRefresh)
     }
 
     override fun initListeners() {
@@ -63,17 +75,25 @@ class TelaInicialFragment(val email: String) : BaseFragment(), TelaInicialContra
             builder.setTitle("Sair da conta")
             builder.setMessage("Você realmente deseja sair da conta?")
 
-            builder.setPositiveButton("SIM"){dialog, which ->
+            builder.setPositiveButton("SIM"){_, _ ->
                 val loginIntent = Intent(activity, LoginView::class.java)
                 activity?.finish()
                 startActivity(loginIntent)
             }
-            builder.setNegativeButton("NÃO"){dialog, which ->
+            builder.setNegativeButton("NÃO"){dialog, _ ->
                 dialog.dismiss()
             }
 
             val dialog: AlertDialog = builder.create()
             dialog.show()
+        }
+
+        btnExtrato.setOnClickListener {
+            changeFragment(BankStatementFragment())
+        }
+
+        btnRefresh.setOnClickListener {
+            presenter.getUserInfo()
         }
     }
 

@@ -8,6 +8,6 @@
     <color name="defaultTextColor">#222222</color>
     <color name="defaultHintColor">#444444</color>
     <color name="line_divider">#DDDDDD</color>
-    <color name="minus_value">#9B2222</color>
-    <color name="plus_value">#369B00</color>
+    <color name="minus_value">#B11E1E</color>
+    <color name="plus_value">#44AF0B</color>
 </resources>

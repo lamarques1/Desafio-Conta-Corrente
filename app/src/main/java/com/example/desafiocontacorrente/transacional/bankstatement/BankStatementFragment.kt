@@ -1,0 +1,79 @@
+package com.example.desafiocontacorrente.transacional.bankstatement
+
+
+import android.content.Context
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+
+import com.example.desafiocontacorrente.R
+import com.example.desafiocontacorrente.model.Banking
+import com.example.desafiocontacorrente.transacional.bankstatement.adapter.BankStatementAdapter
+import com.example.desafiocontacorrente.utils.BaseFragment
+
+/**
+ * A simple [Fragment] subclass.
+ */
+class BankStatementFragment : BaseFragment(), BankStatementContract.View {
+
+    private lateinit var emptyState: TextView
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: BankStatementAdapter
+    private lateinit var presenter: BankStatementContract.Presenter
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_extrato, container, false)
+
+        initViews(view)
+
+        setPresenter()
+        presenter.getBankStatement()
+
+        return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setTitulo(getString(R.string.title_extrato))
+    }
+
+
+    override fun setPresenter() {
+        presenter = BankStatementPresenter(this)
+    }
+
+    override fun getContext(): Context {
+        return activity?.applicationContext!!
+    }
+
+    override fun initViews(view: View) {
+        emptyState = view.findViewById(R.id.BankingEmptyState)
+        recyclerView = view.findViewById(R.id.recyclerView)
+    }
+
+    override fun bindList(bankStatement: List<Banking>) {
+        emptyState.visibility = View.GONE
+        recyclerView.visibility = View.VISIBLE
+
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+        adapter = BankStatementAdapter(activity?.applicationContext!!, bankStatement)
+        recyclerView.adapter = adapter
+    }
+
+    override fun bindEmptyState() {
+        recyclerView.visibility = View.GONE
+        emptyState.visibility = View.VISIBLE
+    }
+
+    override fun displayErrorMessage(errorId: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+}

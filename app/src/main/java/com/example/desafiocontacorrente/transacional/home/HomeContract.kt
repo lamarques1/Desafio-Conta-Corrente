@@ -1,17 +1,18 @@
-package com.example.desafiocontacorrente.transacional.telainicial
+package com.example.desafiocontacorrente.transacional.home
 
-import android.view.View
+import android.content.Context
 import com.example.desafiocontacorrente.model.User
 
-interface TelaInicialContract{
+interface HomeContract{
     interface View{
         fun setPresenter()
-        fun bindViews(view: android.view.View)
+        fun getContext(): Context
+        fun initViews(view: android.view.View)
         fun bindUserInfo(user: User)
         fun displayErrorMessage(errorId: Int)
         fun initListeners()
     }
     interface Presenter{
-        fun getUserInfo(email: String)
+        fun getUserInfo()
     }
 }

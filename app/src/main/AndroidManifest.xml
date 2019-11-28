@@ -15,7 +15,7 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".transacional.MainLogadoActivity"
+            android:name=".transacional.MainActivity"
             android:screenOrientation="portrait"/>
 
         <activity
