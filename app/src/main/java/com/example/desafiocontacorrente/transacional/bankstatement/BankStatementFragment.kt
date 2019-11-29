@@ -32,7 +32,8 @@ class BankStatementFragment : BaseFragment(), BankStatementContract.View {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_extrato, container, false)
+        val view = inflater.inflate(R.layout.fragment_bank_statement, container, false)
+        setProgress(true)
 
         initViews(view)
 
@@ -46,7 +47,7 @@ class BankStatementFragment : BaseFragment(), BankStatementContract.View {
 
     override fun onResume() {
         super.onResume()
-        setTitulo(getString(R.string.title_extrato))
+        setTitulo(getString(R.string.title_bank_statement))
     }
 
 
@@ -78,11 +79,13 @@ class BankStatementFragment : BaseFragment(), BankStatementContract.View {
         recyclerView.layoutManager = LinearLayoutManager(activity)
         adapter = BankStatementAdapter(activity?.applicationContext!!, bankStatement)
         recyclerView.adapter = adapter
+        setProgress(false)
     }
 
     override fun bindEmptyState() {
         recyclerView.visibility = View.GONE
         emptyState.visibility = View.VISIBLE
+        setProgress(false)
     }
 
     override fun displayErrorMessage(errorId: Int) {

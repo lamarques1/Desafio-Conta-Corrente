@@ -12,11 +12,21 @@ interface AccountServiceApi {
     }
 
     @POST("./check-login")
-    fun validateUser(email: String, password: String, callback: AccountServiceCallback<Status>)
+    fun validateUser(email: String,
+                     password: String,
+                     callback: AccountServiceCallback<Status>)
 
     @POST("./get-user")
-    fun getUser(email: String, callback: AccountServiceCallback<User>)
+    fun getUser(email: String,
+                callback: AccountServiceCallback<User>)
 
     @POST("./get-bank-statement")
-    fun getBankStatement(userId: String, callback: AccountServiceCallback<List<Banking>>)
+    fun getBankStatement(userId: String,
+                         callback: AccountServiceCallback<List<Banking>>)
+
+    @POST("./transfer")
+    fun transfer(userFromId: String,
+                 userToId: String,
+                 value: String,
+                 callback: AccountServiceCallback<Status>)
 }

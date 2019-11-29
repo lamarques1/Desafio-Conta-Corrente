@@ -23,6 +23,12 @@ open class BaseFragment : Fragment() {
         }
     }
 
+    fun setProgress(visible: Boolean){
+        if (activity is MainActivity) {
+            (activity as MainActivity).setProgress(visible)
+        }
+    }
+
     fun changeFragment(fragment: BaseFragment){
         if (activity is MainActivity) {
             (activity as MainActivity).changeFragment(fragment)

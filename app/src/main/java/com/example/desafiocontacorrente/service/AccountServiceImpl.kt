@@ -79,4 +79,30 @@ class AccountServiceImpl : AccountServiceApi{
             }
         })
     }
+
+    override fun transfer(
+        userFromId: String,
+        userToId: String,
+        value: String,
+        callback: AccountServiceApi.AccountServiceCallback<Status>
+    ) {
+        val callTransfer = mRetrofit.transfer(userFromId, userToId, value)
+        callTransfer.enqueue(object : Callback<Status>{
+            override fun onResponse(call: Call<Status>, response: Response<Status>) {
+                if (response.code() == 200){
+                    val result: Status
+                    try {
+                        result = response.body()!!
+                        callback.onLoaded(result)
+                    }catch (e: Exception){
+                        callback.onError(R.string.error_make_transfer)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<Status>, t: Throwable) {
+                callback.onError(R.string.error_make_transfer)
+            }
+        })
+    }
 }

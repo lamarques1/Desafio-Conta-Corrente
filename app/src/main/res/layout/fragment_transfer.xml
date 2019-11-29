@@ -1,48 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorBackground"
-    tools:context=".login.LoginView">
+    android:orientation="vertical"
+    tools:context=".transacional.transfer.TransferFragment">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/etEmailLogin"
+            android:id="@+id/etEmailTransfer"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_edit_text"
-            android:hint="@string/enter_email_login"
+            android:hint="@string/enter_email_transfer"
             android:inputType="textEmailAddress"
             android:textColor="@color/defaultTextColor"
             android:textColorHint="@color/defaultHintColor" />
 
         <EditText
-            android:id="@+id/etPassword"
+            android:id="@+id/etValue"
             android:layout_width="135dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/custom_edit_text"
-            android:hint="@string/enter_password_login"
-            android:inputType="numberPassword"
+            android:hint="@string/enter_value_transfer"
+            android:inputType="number"
             android:textColor="@color/defaultTextColor"
             android:textColorHint="@color/defaultHintColor" />
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnTransfer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorPrimary"
-            android:text="@string/access"
+            android:text="@string/button_transfer"
             android:textColor="@android:color/white" />
     </LinearLayout>
 
-
-</RelativeLayout>
+</LinearLayout>

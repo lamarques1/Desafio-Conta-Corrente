@@ -1,31 +1,45 @@
 <resources>
     <string name="app_name">Desafio Conta Corrente</string>
     <string name="progress_loading">Loading…</string>
-    <string name="senha">Senha</string>
+    <string name="enter_email_login">Email</string>
+    <string name="enter_password_login">Senha</string>
     <string name="email">Email</string>
-    <string name="acessar">Acessar</string>
+    <string name="access">Acessar</string>
 
     <!-- Titles -->
-    <string name="title_acesso_a_conta">Acesso a Conta</string>
-    <string name="title_transferencia">Transferência</string>
+    <string name="title_account_access">Acesso a Conta</string>
+    <string name="title_transfer">Transferência</string>
     <string name="title_home">Minha conta</string>
-    <string name="title_confirmar_transferencia">Confirmar Transferência</string>
-    <string name="title_resumo_transferencia">Resumo Transferência</string>
-    <string name="title_extrato">Extrato</string>
-    <string name="title_sair">Sair</string>
+    <string name="title_confirm_transfer">Confirmar Transferência</string>
+    <string name="title_bank_statement">Extrato</string>
+    <string name="title_exit">Sair</string>
 
     <string name="error_inactive_user">Usuário inativo!</string>
     <string name="error_user_not_found">Email ou senha incorretos!</string>
     <string name="error_search">Erro ao realizar a busca!</string>
 
-    <string name="ola">Olá,</string>
-    <string name="saldo">Saldo:</string>
+    <string name="hello">Olá,</string>
+    <string name="balance">Saldo</string>
     <string name="rs">R$</string>
-    <string name="saldo_valor">00,00</string>
-    <string name="lista_extrato_vazia">Não há histórico de transferências em sua conta.</string>
-    
+    <string name="balance_value">00,00</string>
+    <string name="banking_list_empty">Não há histórico de transferências em sua conta.</string>
+
     <string name="shared_pref_file_key">EXTRAS</string>
     <string name="calendar_icon">Calendar Icon</string>
     <string name="plus_icon">Plus icon</string>
     <string name="refresh_icon">Refresh icon</string>
+
+    <!-- Transfer -->
+    <string name="enter_email_transfer">Email de destino</string>
+    <string name="enter_value_transfer">Valor</string>
+    <string name="button_transfer">Transferir</string>
+    <string name="error_make_transfer">Erro ao realizar transferência!</string>
+
+    <string name="dialog_exit_title">Sair da conta</string>
+    <string name="dialog_exit_body">Você realmente deseja sair da conta?</string>
+
+    <string name="dialog_transfer_title">Transferência realizada com sucesso</string>
+    <string name="dialog_yes">SIM</string>
+    <string name="dialog_no">NÃO</string>
+    <string name="dialog_neutral">VOLTAR</string>
 </resources>

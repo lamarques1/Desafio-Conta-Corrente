@@ -6,7 +6,7 @@
     <color name="colorBackground">#EEEEEE</color>
     <color name="colorSurface">#DDDDDD</color>
     <color name="defaultTextColor">#222222</color>
-    <color name="defaultHintColor">#444444</color>
+    <color name="defaultHintColor">#77222222</color>
     <color name="line_divider">#DDDDDD</color>
     <color name="minus_value">#B11E1E</color>
     <color name="plus_value">#44AF0B</color>

@@ -10,6 +10,7 @@ interface MainContract {
         fun bindViews()
         fun changeFragment(fragment: Fragment)
         fun setTitulo(titulo: String)
+        fun setProgress(visible: Boolean)
     }
     interface Presenter{
         fun getUserInfo(email: String)

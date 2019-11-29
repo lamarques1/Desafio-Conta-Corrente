@@ -32,7 +32,7 @@ class LoginView : BaseActivity(), LoginContract.View {
     }
 
     override fun initViews() {
-        etEmail = findViewById(R.id.etEmail)
+        etEmail = findViewById(R.id.etEmailLogin)
         etPassword = findViewById(R.id.etPassword)
         btnLogin = findViewById(R.id.btnLogin)
     }
@@ -45,7 +45,7 @@ class LoginView : BaseActivity(), LoginContract.View {
 
     override fun authUser() {
         val homeIntent = Intent(this, MainActivity::class.java)
-        homeIntent.putExtra("email", etEmail.text.toString().trim())
+        homeIntent.putExtra("email", etEmail.text.toString())
         startActivity(homeIntent)
     }
 
