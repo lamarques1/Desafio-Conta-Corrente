@@ -1,6 +1,5 @@
 package com.example.desafiocontacorrente.transacional.home
 
-import android.widget.Toast
 import com.example.desafiocontacorrente.model.User
 import com.example.desafiocontacorrente.service.AccountServiceApi
 import com.example.desafiocontacorrente.service.AccountServiceImpl

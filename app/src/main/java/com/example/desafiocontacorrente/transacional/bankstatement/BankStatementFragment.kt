@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 import com.example.desafiocontacorrente.R
 import com.example.desafiocontacorrente.model.Banking
@@ -21,6 +22,7 @@ import com.example.desafiocontacorrente.utils.BaseFragment
  */
 class BankStatementFragment : BaseFragment(), BankStatementContract.View {
 
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var emptyState: TextView
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: BankStatementAdapter
@@ -36,6 +38,8 @@ class BankStatementFragment : BaseFragment(), BankStatementContract.View {
 
         setPresenter()
         presenter.getBankStatement()
+
+        initListeners()
 
         return view
     }
@@ -55,8 +59,16 @@ class BankStatementFragment : BaseFragment(), BankStatementContract.View {
     }
 
     override fun initViews(view: View) {
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)
         emptyState = view.findViewById(R.id.BankingEmptyState)
         recyclerView = view.findViewById(R.id.recyclerView)
+    }
+
+    override fun initListeners() {
+        swipeRefreshLayout.setOnRefreshListener {
+            presenter.getBankStatement()
+            swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     override fun bindList(bankStatement: List<Banking>) {

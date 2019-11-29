@@ -56,7 +56,6 @@ open class MainActivity : BaseActivity(), MainContract.View {
         }else{
             finish()
         }
-
     }
 
     override fun changeFragment(fragment: Fragment){

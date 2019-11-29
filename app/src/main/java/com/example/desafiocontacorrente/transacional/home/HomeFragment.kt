@@ -5,13 +5,13 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 import com.example.desafiocontacorrente.R
 import com.example.desafiocontacorrente.login.LoginView
@@ -21,6 +21,7 @@ import com.example.desafiocontacorrente.utils.BaseFragment
 
 class HomeFragment : BaseFragment(), HomeContract.View {
 
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var txtName: TextView
     private lateinit var txtSaldo: TextView
     private lateinit var btnExtrato: Button
@@ -61,6 +62,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
     override fun initViews(view: View) {
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)
         txtName = view.findViewById(R.id.txtName)
         txtSaldo = view.findViewById(R.id.txtSaldo)
         btnExtrato = view.findViewById(R.id.btnExtrato)
@@ -70,6 +72,11 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
     override fun initListeners() {
+        swipeRefreshLayout.setOnRefreshListener {
+            presenter.getUserInfo()
+            swipeRefreshLayout.isRefreshing = false
+        }
+
         btnSair.setOnClickListener {
             val builder = AlertDialog.Builder(activity)
             builder.setTitle("Sair da conta")

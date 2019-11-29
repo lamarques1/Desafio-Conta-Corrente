@@ -17,12 +17,9 @@ class MainPresenter(val view: MainContract.View): MainContract.Presenter {
 
                 view.changeFragment(HomeFragment())
             }
-
             override fun onError(errorId: Int) {
 
             }
-
         })
-
     }
 }

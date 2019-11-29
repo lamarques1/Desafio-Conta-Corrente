@@ -9,6 +9,7 @@ interface BankStatementContract {
         fun setPresenter()
         fun getContext(): Context
         fun initViews(view: android.view.View)
+        fun initListeners()
         fun bindList(bankStatement: List<Banking>)
         fun bindEmptyState()
         fun displayErrorMessage(errorId: Int)
