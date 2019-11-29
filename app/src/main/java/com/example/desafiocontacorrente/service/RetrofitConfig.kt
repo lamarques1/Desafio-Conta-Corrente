@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitConfig {
-    val BASE_URL = "http://www.yourgps.com.br/api/"
+    val BASE_URL = "https://www.yourgps.com.br/api/"
     private var retrofit: Retrofit? = null
 
     private val gson = GsonBuilder()
