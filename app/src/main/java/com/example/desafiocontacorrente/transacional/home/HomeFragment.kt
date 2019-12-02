@@ -8,10 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 import com.example.desafiocontacorrente.R
@@ -88,9 +85,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
             builder.setMessage(getString(R.string.dialog_exit_body))
 
             builder.setPositiveButton(getString(R.string.dialog_yes)){ _, _ ->
-                val loginIntent = Intent(activity, LoginView::class.java)
                 activity?.finish()
-                startActivity(loginIntent)
             }
             builder.setNegativeButton(getString(R.string.dialog_no)){ dialog, _ ->
                 dialog.dismiss()
@@ -125,7 +120,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
     override fun displayErrorMessage(errorId: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText(context, errorId, Toast.LENGTH_SHORT).show()
     }
 
 

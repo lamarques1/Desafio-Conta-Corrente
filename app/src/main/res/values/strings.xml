@@ -47,4 +47,6 @@
     <string name="dialog_no">NÃO</string>
     <string name="dialog_neutral">VOLTAR</string>
     <string name="error_invalid_field">Campo(s) inválido(s)!</string>
+    <string name="open_drawer">Abrir</string>
+    <string name="close_drawer">Fechar</string>
 </resources>

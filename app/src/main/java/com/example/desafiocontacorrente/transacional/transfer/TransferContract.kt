@@ -11,7 +11,6 @@ interface TransferContract {
         fun initListeners()
         fun displayDialog(nameFrom: String, nameTo: String, value: String)
         fun displayErrorMessage(errorId: Int)
-        fun onRefresh()
     }
     interface Presenter{
         fun confirmData(emailTo: String, value: String)

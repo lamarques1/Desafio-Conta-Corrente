@@ -14,7 +14,7 @@ class MainPresenter(val view: MainContract.View): MainContract.Presenter {
         webClient.getUser(email, object : AccountServiceApi.AccountServiceCallback<User>{
             override fun onLoaded(result: User) {
                 SharedPrefUtil().setUser(view.getContext(), result)
-
+                view.bindNavHeader(result)
                 view.changeFragment(HomeFragment())
             }
             override fun onError(errorId: Int) {

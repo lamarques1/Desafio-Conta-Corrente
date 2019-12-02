@@ -20,9 +20,6 @@ import com.example.desafiocontacorrente.utils.BaseFragment
  * A simple [Fragment] subclass.
  */
 class TransferFragment : BaseFragment(), TransferContract.View {
-    override fun onRefresh() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     private lateinit var etEmail: EditText
     private lateinit var etValue: EditText
