@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navHome">
+
+    <fragment
+        android:id="@+id/navHome"
+        android:name="com.example.desafiocontacorrente.transacional.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_tela_inicial" />
+
+    <fragment
+        android:id="@+id/navBankStatement"
+        android:name="com.example.desafiocontacorrente.transacional.bankstatement.BankStatementFragment"
+        android:label="@string/title_extrato"
+        tools:layout="@layout/fragment_extrato" />
+
+    <action
+        android:id="@+id/navExit"/>
+</navigation>

@@ -28,4 +28,7 @@
     <string name="calendar_icon">Calendar Icon</string>
     <string name="plus_icon">Plus icon</string>
     <string name="refresh_icon">Refresh icon</string>
+    <string name="nav_header_desc">navigation_header</string>
+    <string name="nav_header_title">Lamarques Oliveira</string>
+    <string name="nav_header_subtitle">lamarques.oliveira@evosystems.com.br</string>
 </resources>
