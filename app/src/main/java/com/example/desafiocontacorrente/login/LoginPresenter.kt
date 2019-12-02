@@ -11,19 +11,23 @@ class LoginPresenter(val view: LoginContract.View) : LoginContract.Presenter {
     override fun authUser(email: String, password: String) {
         val webClient = AccountServiceImpl()
 
-        webClient.validateUser(email, password, object : AccountServiceApi.AccountServiceCallback<Status>{
-            override fun onLoaded(result: Status) {
-                if (result.status){
-                    view.authUser()
-                }else{
-                    view.displayErrorMessage(R.string.error_user_not_found)
+        if (email.isBlank() || password.isBlank()){
+            view.displayErrorMessage(R.string.error_invalid_field)
+        }else{
+            webClient.validateUser(email, password, object : AccountServiceApi.AccountServiceCallback<Status>{
+                override fun onLoaded(result: Status) {
+                    if (result.status){
+                        view.authUser()
+                    }else{
+                        view.displayErrorMessage(R.string.error_user_not_found)
+                    }
                 }
-            }
 
-            override fun onError(errorId: Int) {
-                view.displayErrorMessage(errorId)
-            }
+                override fun onError(errorId: Int) {
+                    view.displayErrorMessage(errorId)
+                }
+            })
+        }
 
-        })
     }
 }

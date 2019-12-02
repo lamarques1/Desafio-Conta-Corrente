@@ -1,7 +1,6 @@
 package com.example.desafiocontacorrente.transacional.transfer
 
 import android.content.Context
-import com.example.desafiocontacorrente.model.User
 
 
 interface TransferContract {
@@ -11,12 +10,12 @@ interface TransferContract {
         fun getContext() : Context
         fun initListeners()
         fun displayDialog(nameFrom: String, nameTo: String, value: String)
-        fun displayErrorMessage()
+        fun displayErrorMessage(errorId: Int)
         fun onRefresh()
     }
     interface Presenter{
-        fun makeTransfer(emailTo: String, value: Int)
-        fun getUserData(email: String): User?
+        fun confirmData(emailTo: String, value: String)
+        fun makeTransfer(value: String)
     }
 
 

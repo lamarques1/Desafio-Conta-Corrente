@@ -14,9 +14,13 @@
     <string name="title_bank_statement">Extrato</string>
     <string name="title_exit">Sair</string>
 
+    <!-- Errors -->
     <string name="error_inactive_user">Usuário inativo!</string>
     <string name="error_user_not_found">Email ou senha incorretos!</string>
     <string name="error_search">Erro ao realizar a busca!</string>
+    <string name="error_insufficient_balance">Saldo insuficiente!</string>
+    <string name="error_update_data">Erro ao atualizar os dados da conta!</string>
+    <string name="error_invalid_email">Email inválido!</string>
 
     <string name="hello">Olá,</string>
     <string name="balance">Saldo</string>
@@ -42,4 +46,5 @@
     <string name="dialog_yes">SIM</string>
     <string name="dialog_no">NÃO</string>
     <string name="dialog_neutral">VOLTAR</string>
+    <string name="error_invalid_field">Campo(s) inválido(s)!</string>
 </resources>

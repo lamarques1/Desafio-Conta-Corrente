@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 import com.example.desafiocontacorrente.R
 import com.example.desafiocontacorrente.transacional.home.HomeFragment
@@ -61,7 +62,7 @@ class TransferFragment : BaseFragment(), TransferContract.View {
 
     override fun initListeners() {
         btnTransfer.setOnClickListener {
-            presenter.makeTransfer("bruna.silva@evosystems.com.br", etValue.text.toString().toInt())
+            presenter.confirmData(etEmail.text.toString(), etValue.text.toString())
         }
     }
 
@@ -74,9 +75,12 @@ class TransferFragment : BaseFragment(), TransferContract.View {
                 changeFragment(HomeFragment())
             }
         }
+
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
     }
 
-    override fun displayErrorMessage() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun displayErrorMessage(errorId: Int) {
+        Toast.makeText(context, errorId, Toast.LENGTH_SHORT).show()
     }
 }

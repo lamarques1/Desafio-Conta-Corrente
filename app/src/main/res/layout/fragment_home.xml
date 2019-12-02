@@ -100,31 +100,40 @@
                     android:layout_weight="1"
                     android:background="@color/colorBackground"
                     android:contentDescription="@string/refresh_icon"
+                    android:visibility="gone"
                     app:srcCompat="@drawable/ic_refresh_24px" />
 
             </LinearLayout>
 
             <Button
                 android:id="@+id/btnExtrato"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="50dp"
-                android:text="@string/title_bank_statement" />
+                android:background="@drawable/custom_button"
+                android:text="@string/title_bank_statement"
+                android:textColor="@android:color/white" />
 
             <Button
                 android:id="@+id/btnTransferir"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/title_transfer" />
+                android:layout_marginTop="16dp"
+                android:background="@drawable/custom_button"
+                android:text="@string/title_transfer"
+                android:textColor="@android:color/white" />
 
             <Button
                 android:id="@+id/btnSair"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/title_exit" />
+                android:layout_marginTop="16dp"
+                android:background="@drawable/custom_button"
+                android:text="@string/title_exit"
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
 

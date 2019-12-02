@@ -29,7 +29,7 @@ open class BaseFragment : Fragment() {
         }
     }
 
-    fun changeFragment(fragment: BaseFragment){
+    open fun changeFragment(fragment: BaseFragment){
         if (activity is MainActivity) {
             (activity as MainActivity).changeFragment(fragment)
         }
