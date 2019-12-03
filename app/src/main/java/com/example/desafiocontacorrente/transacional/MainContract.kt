@@ -13,6 +13,7 @@ interface MainContract {
         fun initListeners()
         fun bindNavHeader(user: User)
         fun changeFragment(fragment: Fragment)
+        fun displayErrorMessage(errorId: Int)
         fun lockDrawerLayout(lock: Boolean)
         fun setTitulo(titulo: String)
         fun setProgress(visible: Boolean)

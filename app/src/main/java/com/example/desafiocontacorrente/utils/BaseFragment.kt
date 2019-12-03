@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import com.example.desafiocontacorrente.R
 import com.example.desafiocontacorrente.transacional.MainActivity
 
+/**
+ * General controls for fragments
+ */
 open class BaseFragment : Fragment() {
     private var actionBar: ActionBar? = null
     private lateinit var toggle: ActionBarDrawerToggle
@@ -21,6 +24,10 @@ open class BaseFragment : Fragment() {
         actionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
+    /**
+     * Change toolbar button
+     * @param show - true: Change to back arrow drawable; false: Change back to default menu icon
+     */
     fun showBackButton(show: Boolean){
         if (show){
             toggle.setHomeAsUpIndicator(R.drawable.ic_arrow_back_24px)

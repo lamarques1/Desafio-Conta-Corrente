@@ -5,6 +5,7 @@ import android.content.Context
 interface LoginContract {
     interface View {
         fun setPresenter()
+        fun getContext(): Context
         fun initViews()
         fun initListeners()
         fun displayErrorMessage(errorId: Int)

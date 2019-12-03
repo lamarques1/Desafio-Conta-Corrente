@@ -5,6 +5,7 @@ import com.example.desafiocontacorrente.model.Status
 import com.example.desafiocontacorrente.model.User
 import com.example.desafiocontacorrente.service.AccountServiceApi
 import com.example.desafiocontacorrente.service.AccountServiceImpl
+import com.example.desafiocontacorrente.utils.Connection
 
 class LoginPresenter(val view: LoginContract.View) : LoginContract.Presenter {
 
@@ -13,6 +14,10 @@ class LoginPresenter(val view: LoginContract.View) : LoginContract.Presenter {
 
         if (email.isBlank() || password.isBlank()){
             view.displayErrorMessage(R.string.error_invalid_field)
+
+        }else if(!Connection().isConnected(view.getContext())){
+            view.displayErrorMessage(R.string.error_no_connection)
+
         }else{
             webClient.validateUser(email, password, object : AccountServiceApi.AccountServiceCallback<Status>{
                 override fun onLoaded(result: Status) {

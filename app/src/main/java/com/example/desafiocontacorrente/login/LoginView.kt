@@ -1,5 +1,6 @@
 package com.example.desafiocontacorrente.login
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -31,6 +32,10 @@ class LoginView : BaseActivity(), LoginContract.View {
         presenter = LoginPresenter(this)
     }
 
+    override fun getContext(): Context{
+        return applicationContext
+    }
+
     override fun initViews() {
         etEmail = findViewById(R.id.etEmailLogin)
         etPassword = findViewById(R.id.etPassword)
@@ -53,6 +58,7 @@ class LoginView : BaseActivity(), LoginContract.View {
         val homeIntent = Intent(this, MainActivity::class.java)
         homeIntent.putExtra("email", etEmail.text.toString())
         homeIntent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+        homeIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(homeIntent)
     }
 

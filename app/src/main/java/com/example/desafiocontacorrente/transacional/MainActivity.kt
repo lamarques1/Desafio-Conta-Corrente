@@ -18,6 +18,7 @@ import com.example.desafiocontacorrente.transacional.bankstatement.BankStatement
 import com.example.desafiocontacorrente.transacional.home.HomeFragment
 import com.example.desafiocontacorrente.transacional.transfer.TransferFragment
 import com.example.desafiocontacorrente.utils.BaseActivity
+import com.example.desafiocontacorrente.utils.Connection
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.nav_header.*
 
@@ -82,10 +83,6 @@ open class MainActivity : BaseActivity(), MainContract.View {
             drawerLayout.closeDrawer(GravityCompat.START)
             true
         }
-
-        toolbar.setNavigationOnClickListener {
-            onBackPressed()
-        }
     }
 
     override fun bindNavHeader(user: User) {
@@ -106,6 +103,10 @@ open class MainActivity : BaseActivity(), MainContract.View {
         return applicationContext
     }
 
+    /**
+     * Handle back button action
+     * Control Drawer visibility and fragment's changes
+     */
     override fun onBackPressed() {
         if(!drawerLayout.isDrawerOpen(GravityCompat.START)){
             if (supportFragmentManager.findFragmentById(R.id.conteudo) !is HomeFragment){
@@ -127,16 +128,29 @@ open class MainActivity : BaseActivity(), MainContract.View {
         val oldFragment = fragmentManager.findFragmentById(R.id.conteudo)
 
         if (fragment != oldFragment) {
-            val fragmentTransaction = fragmentManager.beginTransaction()
+            if(!Connection().isConnected(this)){
+                displayErrorMessage(R.string.error_no_connection)
 
-            fragmentTransaction.replace(fragmentContainer.id, fragment)
-            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
+            }else{
+                val fragmentTransaction = fragmentManager.beginTransaction()
 
+                fragmentTransaction.replace(fragmentContainer.id, fragment)
+                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.commit()
+
+            }
         }
     }
 
+    override fun displayErrorMessage(errorId: Int) {
+        Toast.makeText(this, errorId, Toast.LENGTH_SHORT).show()
+    }
+
+    /**
+     * Control drawer layout visibility
+     * @param lock - true: lock drawer layout closed, false: unlock
+     */
     override fun lockDrawerLayout(lock: Boolean){
         if (lock) {
             drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
@@ -149,6 +163,10 @@ open class MainActivity : BaseActivity(), MainContract.View {
         toolbar.title = titulo
     }
 
+    /**
+     * Handle loading time. Must start Visible and change to Gone after content's ready to show
+     * @param visible
+     */
     override fun setProgress(visible: Boolean){
         if (visible){
             progressBar.visibility = View.VISIBLE
@@ -163,6 +181,11 @@ open class MainActivity : BaseActivity(), MainContract.View {
         return toggle
     }
 
+    /**
+     * Handle clicks on toolbar icons
+     * If current fragment's HomeFragment: open drawer layout
+     * for any other fragment: call onBackPressed() returning to HomeFragment
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             android.R.id.home ->{
