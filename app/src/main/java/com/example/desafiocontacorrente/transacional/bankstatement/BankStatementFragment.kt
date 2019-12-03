@@ -3,17 +3,17 @@ package com.example.desafiocontacorrente.transacional.bankstatement
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-
 import com.example.desafiocontacorrente.R
 import com.example.desafiocontacorrente.model.Banking
+import com.example.desafiocontacorrente.transacional.MainActivity
 import com.example.desafiocontacorrente.transacional.bankstatement.adapter.BankStatementAdapter
 import com.example.desafiocontacorrente.utils.BaseFragment
 
@@ -36,11 +36,13 @@ class BankStatementFragment : BaseFragment(), BankStatementContract.View {
         setProgress(true)
 
         initViews(view)
-
         setPresenter()
         presenter.getBankStatement()
 
         initListeners()
+
+        (activity as MainActivity).lockDrawerLayout(true)
+
 
         return view
     }
@@ -48,6 +50,7 @@ class BankStatementFragment : BaseFragment(), BankStatementContract.View {
     override fun onResume() {
         super.onResume()
         setTitulo(getString(R.string.title_bank_statement))
+        showBackButton(true)
     }
 
 

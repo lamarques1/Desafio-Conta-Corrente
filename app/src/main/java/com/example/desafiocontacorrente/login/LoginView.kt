@@ -37,15 +37,22 @@ class LoginView : BaseActivity(), LoginContract.View {
         btnLogin = findViewById(R.id.btnLogin)
     }
 
+    /**
+     * When button tapped, call presenter to authenticate login.
+     */
     override fun initListeners() {
         btnLogin.setOnClickListener {
             presenter.authUser(etEmail.text.toString().trim(), etPassword.text.toString().trim())
         }
     }
 
+    /**
+     * Start transactional activity with user email
+     */
     override fun authUser() {
         val homeIntent = Intent(this, MainActivity::class.java)
         homeIntent.putExtra("email", etEmail.text.toString())
+        homeIntent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
         startActivity(homeIntent)
     }
 

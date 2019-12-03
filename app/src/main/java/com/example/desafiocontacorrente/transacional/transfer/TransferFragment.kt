@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.Toast
 
 import com.example.desafiocontacorrente.R
+import com.example.desafiocontacorrente.transacional.MainActivity
 import com.example.desafiocontacorrente.transacional.home.HomeFragment
 import com.example.desafiocontacorrente.utils.BaseFragment
 
@@ -40,7 +41,14 @@ class TransferFragment : BaseFragment(), TransferContract.View {
 
         initListeners()
 
+        (activity as MainActivity).lockDrawerLayout(true)
+
         return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showBackButton(true)
     }
 
     override fun setPresenter() {

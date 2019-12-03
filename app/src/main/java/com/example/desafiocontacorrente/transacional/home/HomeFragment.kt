@@ -1,21 +1,19 @@
 package com.example.desafiocontacorrente.transacional.home
 
 
-import android.app.AlertDialog
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-
 import com.example.desafiocontacorrente.R
-import com.example.desafiocontacorrente.login.LoginView
 import com.example.desafiocontacorrente.model.User
+import com.example.desafiocontacorrente.transacional.MainActivity
 import com.example.desafiocontacorrente.transacional.bankstatement.BankStatementFragment
 import com.example.desafiocontacorrente.transacional.transfer.TransferFragment
+import com.example.desafiocontacorrente.utils.BaseActivity
 import com.example.desafiocontacorrente.utils.BaseFragment
 
 class HomeFragment : BaseFragment(), HomeContract.View {
@@ -45,13 +43,14 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         setPresenter()
         presenter.getUserInfo()
 
-
+        (activity as MainActivity).lockDrawerLayout(false)
         return view
     }
 
     override fun onResume() {
         super.onResume()
         setTitulo(getString(R.string.title_home))
+        showBackButton(false)
     }
 
     override fun setPresenter() {
@@ -80,19 +79,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         }
 
         btnExit.setOnClickListener {
-            val builder = AlertDialog.Builder(activity)
-            builder.setTitle(getString(R.string.dialog_exit_title))
-            builder.setMessage(getString(R.string.dialog_exit_body))
-
-            builder.setPositiveButton(getString(R.string.dialog_yes)){ _, _ ->
-                activity?.finish()
-            }
-            builder.setNegativeButton(getString(R.string.dialog_no)){ dialog, _ ->
-                dialog.dismiss()
-            }
-
-            val dialog: AlertDialog = builder.create()
-            dialog.show()
+            (activity as BaseActivity).showExitDialog(requireActivity())
         }
 
         btnBankStatement.setOnClickListener {

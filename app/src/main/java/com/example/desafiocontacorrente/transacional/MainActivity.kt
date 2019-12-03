@@ -1,6 +1,5 @@
 package com.example.desafiocontacorrente.transacional
 
-import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.MenuItem
@@ -29,6 +28,7 @@ open class MainActivity : BaseActivity(), MainContract.View {
     private lateinit var toolbar: Toolbar
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView
+    private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var fragmentContainer: FrameLayout
     private lateinit var progressBar: ProgressBar
 
@@ -60,7 +60,7 @@ open class MainActivity : BaseActivity(), MainContract.View {
     }
 
     override fun initListeners() {
-        val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer)
+        toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar , R.string.open_drawer, R.string.close_drawer)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
@@ -75,19 +75,7 @@ open class MainActivity : BaseActivity(), MainContract.View {
                 R.id.navBankStatement -> changeFragment(BankStatementFragment())
                 R.id.navTransfer -> changeFragment(TransferFragment())
                 R.id.navExit -> {
-                    val builder = AlertDialog.Builder(this@MainActivity)
-                    builder.setTitle(getString(R.string.dialog_exit_title))
-                    builder.setMessage(getString(R.string.dialog_exit_body))
-
-                    builder.setPositiveButton(getString(R.string.dialog_yes)){ _, _ ->
-                        finish()
-                    }
-                    builder.setNegativeButton(getString(R.string.dialog_no)){ dialog, _ ->
-                        dialog.dismiss()
-                    }
-
-                    val dialog: AlertDialog = builder.create()
-                    dialog.show()
+                    showExitDialog(this)
                 }
             }
 
@@ -119,26 +107,42 @@ open class MainActivity : BaseActivity(), MainContract.View {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START)
-        }
-
-        if (supportFragmentManager.findFragmentById(R.id.conteudo) !is HomeFragment){
-            changeFragment(HomeFragment())
+        if(!drawerLayout.isDrawerOpen(GravityCompat.START)){
+            if (supportFragmentManager.findFragmentById(R.id.conteudo) !is HomeFragment){
+                changeFragment(HomeFragment())
+            }else{
+                showExitDialog(this)
+            }
         }else{
-            finish()
+            drawerLayout.closeDrawer(GravityCompat.START)
         }
     }
 
+    /**
+     * Check if already exists the fragment specified, if not do the change
+     */
     override fun changeFragment(fragment: Fragment){
         val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
 
-        fragmentTransaction.replace(fragmentContainer.id, fragment)
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
+        val oldFragment = fragmentManager.findFragmentById(R.id.conteudo)
+
+        if (fragment != oldFragment) {
+            val fragmentTransaction = fragmentManager.beginTransaction()
+
+            fragmentTransaction.replace(fragmentContainer.id, fragment)
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+
+        }
+    }
+
+    override fun lockDrawerLayout(lock: Boolean){
+        if (lock) {
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        }else{
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+        }
     }
 
     override fun setTitulo(titulo: String){
@@ -155,9 +159,22 @@ open class MainActivity : BaseActivity(), MainContract.View {
         }
     }
 
+    override fun getToggle(): ActionBarDrawerToggle{
+        return toggle
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            android.R.id.home -> onBackPressed()
+            android.R.id.home ->{
+                val fragmentManager = supportFragmentManager
+                if (fragmentManager.findFragmentById(R.id.conteudo) is HomeFragment){
+                    drawerLayout.openDrawer(GravityCompat.START)
+                }else{
+                    onBackPressed()
+                }
+            }
+
+
         }
         return super.onOptionsItemSelected(item)
     }
