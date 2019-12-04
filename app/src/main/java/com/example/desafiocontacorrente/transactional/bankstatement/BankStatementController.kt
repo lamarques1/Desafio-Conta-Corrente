@@ -1,8 +1,7 @@
-package com.example.desafiocontacorrente.transacional.bankstatement
+package com.example.desafiocontacorrente.transactional.bankstatement
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.drawable.Drawable
 import com.example.desafiocontacorrente.R
 import com.example.desafiocontacorrente.utils.SharedPrefUtil
 import java.text.SimpleDateFormat

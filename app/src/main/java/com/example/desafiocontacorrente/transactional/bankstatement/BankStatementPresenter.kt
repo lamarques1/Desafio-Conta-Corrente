@@ -1,4 +1,4 @@
-package com.example.desafiocontacorrente.transacional.bankstatement
+package com.example.desafiocontacorrente.transactional.bankstatement
 
 import com.example.desafiocontacorrente.R
 import com.example.desafiocontacorrente.model.Banking

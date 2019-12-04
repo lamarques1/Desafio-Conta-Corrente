@@ -1,4 +1,4 @@
-package com.example.desafiocontacorrente.transacional.bankstatement
+package com.example.desafiocontacorrente.transactional.bankstatement
 
 import android.content.Context
 import com.example.desafiocontacorrente.model.Banking

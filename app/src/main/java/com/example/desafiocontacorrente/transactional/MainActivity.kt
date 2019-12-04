@@ -1,4 +1,4 @@
-package com.example.desafiocontacorrente.transacional
+package com.example.desafiocontacorrente.transactional
 
 import android.content.Context
 import android.os.Bundle
@@ -14,9 +14,9 @@ import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
 import com.example.desafiocontacorrente.R
 import com.example.desafiocontacorrente.model.User
-import com.example.desafiocontacorrente.transacional.bankstatement.BankStatementFragment
-import com.example.desafiocontacorrente.transacional.home.HomeFragment
-import com.example.desafiocontacorrente.transacional.transfer.TransferFragment
+import com.example.desafiocontacorrente.transactional.bankstatement.BankStatementFragment
+import com.example.desafiocontacorrente.transactional.home.HomeFragment
+import com.example.desafiocontacorrente.transactional.transfer.TransferFragment
 import com.example.desafiocontacorrente.utils.BaseActivity
 import com.example.desafiocontacorrente.utils.Connection
 import com.google.android.material.navigation.NavigationView

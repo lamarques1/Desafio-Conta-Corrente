@@ -1,4 +1,4 @@
-package com.example.desafiocontacorrente.transacional.transfer
+package com.example.desafiocontacorrente.transactional.transfer
 
 
 import android.app.AlertDialog
@@ -13,8 +13,8 @@ import android.widget.EditText
 import android.widget.Toast
 
 import com.example.desafiocontacorrente.R
-import com.example.desafiocontacorrente.transacional.MainActivity
-import com.example.desafiocontacorrente.transacional.home.HomeFragment
+import com.example.desafiocontacorrente.transactional.MainActivity
+import com.example.desafiocontacorrente.transactional.home.HomeFragment
 import com.example.desafiocontacorrente.utils.BaseFragment
 
 /**

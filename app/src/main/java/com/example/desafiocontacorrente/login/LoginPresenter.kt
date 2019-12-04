@@ -9,6 +9,11 @@ import com.example.desafiocontacorrente.utils.Connection
 
 class LoginPresenter(val view: LoginContract.View) : LoginContract.Presenter {
 
+    /**
+     * Authenticate user login
+     * Steps: Check empty fields, check connection, and call checkUser from service
+     * @param email
+     */
     override fun authUser(email: String, password: String) {
         val webClient = AccountServiceImpl()
 
@@ -20,7 +25,10 @@ class LoginPresenter(val view: LoginContract.View) : LoginContract.Presenter {
 
         }else{
             webClient.validateUser(email, password, object : AccountServiceApi.AccountServiceCallback<Status>{
+
                 override fun onLoaded(result: Status) {
+                    // status   true = correct credentials, start transactional
+                    //          false = incorrect credentials, show user not found error
                     if (result.status){
                         view.authUser()
                     }else{

@@ -1,11 +1,10 @@
-package com.example.desafiocontacorrente.transacional.transfer
+package com.example.desafiocontacorrente.transactional.transfer
 
 import com.example.desafiocontacorrente.R
 import com.example.desafiocontacorrente.model.Status
 import com.example.desafiocontacorrente.model.User
 import com.example.desafiocontacorrente.service.AccountServiceApi
 import com.example.desafiocontacorrente.service.AccountServiceImpl
-import com.example.desafiocontacorrente.transacional.home.HomeFragment
 import com.example.desafiocontacorrente.utils.Connection
 import com.example.desafiocontacorrente.utils.SharedPrefUtil
 

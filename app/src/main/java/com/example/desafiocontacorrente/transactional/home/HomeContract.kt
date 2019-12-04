@@ -1,4 +1,4 @@
-package com.example.desafiocontacorrente.transacional.home
+package com.example.desafiocontacorrente.transactional.home
 
 import android.content.Context
 import com.example.desafiocontacorrente.model.User

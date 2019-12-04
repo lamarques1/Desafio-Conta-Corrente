@@ -1,4 +1,4 @@
-package com.example.desafiocontacorrente.transacional.bankstatement.adapter
+package com.example.desafiocontacorrente.transactional.bankstatement.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desafiocontacorrente.R
 import com.example.desafiocontacorrente.model.Banking
-import com.example.desafiocontacorrente.transacional.bankstatement.BankStatementController
+import com.example.desafiocontacorrente.transactional.bankstatement.BankStatementController
 import kotlinx.android.synthetic.main.item_extrato.view.*
 
 class BankStatementAdapter(val context: Context, val bankStatement: List<Banking>):

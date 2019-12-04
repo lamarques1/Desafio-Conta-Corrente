@@ -1,31 +1,38 @@
-package com.example.desafiocontacorrente.transacional
+package com.example.desafiocontacorrente.transactional.home
 
 import com.example.desafiocontacorrente.R
 import com.example.desafiocontacorrente.model.User
 import com.example.desafiocontacorrente.service.AccountServiceApi
 import com.example.desafiocontacorrente.service.AccountServiceImpl
-import com.example.desafiocontacorrente.transacional.home.HomeFragment
 import com.example.desafiocontacorrente.utils.Connection
 import com.example.desafiocontacorrente.utils.SharedPrefUtil
 
-class MainPresenter(val view: MainContract.View): MainContract.Presenter {
+class HomePresenter(val view: HomeContract.View) : HomeContract.Presenter {
 
-    override fun getUserInfo(email: String) {
+    /**
+     * Request user info from service
+     * Before all, validate if user has internet connection
+     */
+    override fun getUserInfo() {
+        val user = SharedPrefUtil().getUser(view.getContext())
         val webClient = AccountServiceImpl()
+
         if(!Connection().isConnected(view.getContext())){
             view.displayErrorMessage(R.string.error_no_connection)
-        }else{
-            webClient.getUser(email, object : AccountServiceApi.AccountServiceCallback<User>{
-                override fun onLoaded(result: User) {
-                    SharedPrefUtil().setUser(view.getContext(), result)
-                    view.bindNavHeader(result)
-                    view.changeFragment(HomeFragment())
-                }
-                override fun onError(errorId: Int) {
 
+        }else{
+            webClient.getUser(user.email, object : AccountServiceApi.AccountServiceCallback<User>{
+                override fun onLoaded(result: User) {
+                    view.bindUserInfo(result)
                 }
+
+                override fun onError(errorId: Int) {
+                    view.displayErrorMessage(errorId)
+                }
+
             })
         }
+
 
     }
 }

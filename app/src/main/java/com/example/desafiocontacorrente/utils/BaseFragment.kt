@@ -6,7 +6,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
 import com.example.desafiocontacorrente.R
-import com.example.desafiocontacorrente.transacional.MainActivity
+import com.example.desafiocontacorrente.transactional.MainActivity
 
 /**
  * General controls for fragments

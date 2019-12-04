@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.desafiocontacorrente.R
-import com.example.desafiocontacorrente.transacional.MainActivity
+import com.example.desafiocontacorrente.transactional.MainActivity
 import com.example.desafiocontacorrente.utils.BaseActivity
 
 class LoginView : BaseActivity(), LoginContract.View {

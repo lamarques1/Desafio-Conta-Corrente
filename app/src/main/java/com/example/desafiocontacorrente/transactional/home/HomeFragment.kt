@@ -1,4 +1,4 @@
-package com.example.desafiocontacorrente.transacional.home
+package com.example.desafiocontacorrente.transactional.home
 
 
 import android.content.Context
@@ -10,9 +10,9 @@ import android.widget.*
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.desafiocontacorrente.R
 import com.example.desafiocontacorrente.model.User
-import com.example.desafiocontacorrente.transacional.MainActivity
-import com.example.desafiocontacorrente.transacional.bankstatement.BankStatementFragment
-import com.example.desafiocontacorrente.transacional.transfer.TransferFragment
+import com.example.desafiocontacorrente.transactional.MainActivity
+import com.example.desafiocontacorrente.transactional.bankstatement.BankStatementFragment
+import com.example.desafiocontacorrente.transactional.transfer.TransferFragment
 import com.example.desafiocontacorrente.utils.BaseActivity
 import com.example.desafiocontacorrente.utils.BaseFragment
 

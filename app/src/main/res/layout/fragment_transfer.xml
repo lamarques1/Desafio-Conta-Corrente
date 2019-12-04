@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     android:orientation="vertical"
-    tools:context=".transacional.transfer.TransferFragment">
+    tools:context=".transactional.transfer.TransferFragment">
 
     <LinearLayout
         android:layout_width="wrap_content"

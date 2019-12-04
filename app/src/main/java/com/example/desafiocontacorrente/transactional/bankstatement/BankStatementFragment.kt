@@ -1,4 +1,4 @@
-package com.example.desafiocontacorrente.transacional.bankstatement
+package com.example.desafiocontacorrente.transactional.bankstatement
 
 
 import android.content.Context
@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.desafiocontacorrente.R
 import com.example.desafiocontacorrente.model.Banking
-import com.example.desafiocontacorrente.transacional.MainActivity
-import com.example.desafiocontacorrente.transacional.bankstatement.adapter.BankStatementAdapter
+import com.example.desafiocontacorrente.transactional.MainActivity
+import com.example.desafiocontacorrente.transactional.bankstatement.adapter.BankStatementAdapter
 import com.example.desafiocontacorrente.utils.BaseFragment
 
 /**
