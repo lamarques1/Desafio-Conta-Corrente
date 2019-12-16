@@ -3,12 +3,14 @@ package com.example.desafiocontacorrente.login
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.desafiocontacorrente.R
 import com.example.desafiocontacorrente.transactional.MainActivity
 import com.example.desafiocontacorrente.utils.BaseActivity
+import java.util.*
 
 class LoginView : BaseActivity(), LoginContract.View {
 
@@ -48,6 +50,20 @@ class LoginView : BaseActivity(), LoginContract.View {
     override fun initListeners() {
         btnLogin.setOnClickListener {
             presenter.authUser(etEmail.text.toString().trim(), etPassword.text.toString().trim())
+        }
+
+        etEmail.setOnFocusChangeListener { v, _ ->
+            if (!v.hasFocus()) {
+                val imm  = applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(v.windowToken, 0)
+            }
+        }
+
+        etPassword.setOnFocusChangeListener { v, _ ->
+            if (!v.hasFocus()) {
+                val imm  = applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(v.windowToken, 0)
+            }
         }
     }
 

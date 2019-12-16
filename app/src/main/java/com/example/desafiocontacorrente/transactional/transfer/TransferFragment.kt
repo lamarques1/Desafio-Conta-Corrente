@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -68,6 +69,20 @@ class TransferFragment : BaseFragment(), TransferContract.View {
     override fun initListeners() {
         btnTransfer.setOnClickListener {
             presenter.confirmData(etEmail.text.toString(), etValue.text.toString())
+        }
+
+        etEmail.setOnFocusChangeListener { v, _ ->
+            if (!v.hasFocus()) {
+                val imm  = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(v.windowToken, 0)
+            }
+        }
+
+        etValue.setOnFocusChangeListener { v, _ ->
+            if (!v.hasFocus()) {
+                val imm  = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(v.windowToken, 0)
+            }
         }
     }
 
