@@ -2,7 +2,6 @@ package com.example.desafiocontacorrente.login
 
 import com.example.desafiocontacorrente.R
 import com.example.desafiocontacorrente.model.Status
-import com.example.desafiocontacorrente.model.User
 import com.example.desafiocontacorrente.service.AccountServiceApi
 import com.example.desafiocontacorrente.service.AccountServiceImpl
 import com.example.desafiocontacorrente.utils.Connection

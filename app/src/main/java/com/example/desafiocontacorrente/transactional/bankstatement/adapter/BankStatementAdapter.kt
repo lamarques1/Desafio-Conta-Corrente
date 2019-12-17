@@ -10,7 +10,7 @@ import com.example.desafiocontacorrente.model.Banking
 import com.example.desafiocontacorrente.transactional.bankstatement.BankStatementController
 import kotlinx.android.synthetic.main.item_extrato.view.*
 
-class BankStatementAdapter(val context: Context, val bankStatement: List<Banking>):
+class BankStatementAdapter(val context: Context?, val bankStatement: List<Banking>):
     RecyclerView.Adapter<BankStatementAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_extrato, parent, false)

@@ -57,8 +57,8 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         presenter = HomePresenter(this)
     }
 
-    override fun getContext(): Context {
-        return activity?.applicationContext!!
+    override fun getContext(): Context? {
+        return super.getContext()
     }
 
     override fun initViews(view: View) {
@@ -79,7 +79,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         }
 
         btnExit.setOnClickListener {
-            (activity as BaseActivity).showExitDialog(requireActivity())
+            (activity as BaseActivity).showExitDialog(context)
         }
 
         btnBankStatement.setOnClickListener {

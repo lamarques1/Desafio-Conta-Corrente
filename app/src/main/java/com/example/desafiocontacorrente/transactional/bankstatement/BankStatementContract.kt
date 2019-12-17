@@ -7,7 +7,7 @@ import com.example.desafiocontacorrente.model.Banking
 interface BankStatementContract {
     interface View{
         fun setPresenter()
-        fun getContext(): Context
+        fun getContext(): Context?
         fun initViews(view: android.view.View)
         fun initListeners()
         fun bindList(bankStatement: List<Banking>)

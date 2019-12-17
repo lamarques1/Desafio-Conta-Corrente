@@ -17,7 +17,7 @@ open class BankStatementController {
         return outputFormat.format(date).replace("-", "/")
     }
 
-    fun getBankingType(context: Context, fromId: Int): String{
+    fun getBankingType(context: Context?, fromId: Int): String{
         val user = SharedPrefUtil().getUser(context)
 
         return if (user.id == fromId.toString()){
@@ -27,7 +27,7 @@ open class BankStatementController {
         }
     }
 
-    fun getValueIcon(context: Context, fromId: Int): Int{
+    fun getValueIcon(context: Context?, fromId: Int): Int{
         val user = SharedPrefUtil().getUser(context)
 
         return if (user.id == fromId.toString()){

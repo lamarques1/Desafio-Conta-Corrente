@@ -6,12 +6,12 @@ import android.net.NetworkInfo
 
 class Connection {
 
-    private fun getNetworkInfo(context: Context): NetworkInfo? {
-        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    private fun getNetworkInfo(context: Context?): NetworkInfo? {
+        val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         return cm.activeNetworkInfo
     }
 
-    fun isConnected(context: Context): Boolean {
+    fun isConnected(context: Context?): Boolean {
         val info = getNetworkInfo(context)
         return info != null && info.isConnected()
     }

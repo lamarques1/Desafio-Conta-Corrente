@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -19,7 +18,8 @@ import com.example.desafiocontacorrente.transactional.bankstatement.adapter.Bank
 import com.example.desafiocontacorrente.utils.BaseFragment
 
 /**
- * A simple [Fragment] subclass.
+ * Load user's bankstatement
+ * Create a list containing transfer type, date and the value for each item.
  */
 class BankStatementFragment : BaseFragment(), BankStatementContract.View {
 
@@ -44,7 +44,6 @@ class BankStatementFragment : BaseFragment(), BankStatementContract.View {
 
         (activity as MainActivity).lockDrawerLayout(true)
 
-
         return view
     }
 
@@ -54,13 +53,12 @@ class BankStatementFragment : BaseFragment(), BankStatementContract.View {
         showBackButton(true)
     }
 
-
     override fun setPresenter() {
         presenter = BankStatementPresenter(this)
     }
 
-    override fun getContext(): Context {
-        return activity?.applicationContext!!
+    override fun getContext(): Context? {
+        return super.getContext()
     }
 
     override fun initViews(view: View) {
@@ -81,7 +79,7 @@ class BankStatementFragment : BaseFragment(), BankStatementContract.View {
         recyclerView.visibility = View.VISIBLE
 
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        adapter = BankStatementAdapter(activity?.applicationContext!!, bankStatement)
+        adapter = BankStatementAdapter(context, bankStatement)
         recyclerView.adapter = adapter
         setProgress(false)
     }

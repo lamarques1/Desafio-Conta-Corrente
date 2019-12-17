@@ -56,8 +56,8 @@ class TransferFragment : BaseFragment(), TransferContract.View {
         presenter = TransferPresenter(this)
     }
 
-    override fun getContext(): Context {
-        return activity?.applicationContext!!
+    override fun getContext(): Context? {
+        return super.getContext()
     }
 
     override fun initViews(view: View) {
@@ -73,14 +73,14 @@ class TransferFragment : BaseFragment(), TransferContract.View {
 
         etEmail.setOnFocusChangeListener { v, _ ->
             if (!v.hasFocus()) {
-                val imm  = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                val imm  = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(v.windowToken, 0)
             }
         }
 
         etValue.setOnFocusChangeListener { v, _ ->
             if (!v.hasFocus()) {
-                val imm  = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                val imm  = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(v.windowToken, 0)
             }
         }

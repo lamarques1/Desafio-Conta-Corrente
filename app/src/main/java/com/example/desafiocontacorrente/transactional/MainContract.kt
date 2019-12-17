@@ -8,7 +8,7 @@ import com.example.desafiocontacorrente.model.User
 interface MainContract {
     interface View{
         fun setPresenter()
-        fun getContext(): Context
+        fun getContext(): Context?
         fun initViews()
         fun initListeners()
         fun bindNavHeader(user: User)

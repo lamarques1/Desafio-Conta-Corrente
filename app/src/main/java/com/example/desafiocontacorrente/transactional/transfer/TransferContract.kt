@@ -7,7 +7,7 @@ interface TransferContract {
     interface View{
         fun setPresenter()
         fun initViews(view: android.view.View)
-        fun getContext() : Context
+        fun getContext() : Context?
         fun initListeners()
         fun displayDialog(nameFrom: String, nameTo: String, value: String)
         fun displayErrorMessage(errorId: Int)

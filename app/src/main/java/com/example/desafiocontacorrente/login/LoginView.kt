@@ -34,9 +34,7 @@ class LoginView : BaseActivity(), LoginContract.View {
         presenter = LoginPresenter(this)
     }
 
-    override fun getContext(): Context{
-        return applicationContext
-    }
+    override fun getContext(): Context? = this
 
     override fun initViews() {
         etEmail = findViewById(R.id.etEmailLogin)

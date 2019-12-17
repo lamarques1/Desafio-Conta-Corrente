@@ -18,7 +18,7 @@ open class BaseActivity : AppCompatActivity() {
 
     }
 
-    open fun showExitDialog(context: Context){
+    open fun showExitDialog(context: Context?){
 
         val builder = AlertDialog.Builder(context)
         builder.setTitle(getString(R.string.dialog_exit_title))

@@ -99,9 +99,7 @@ open class MainActivity : BaseActivity(), MainContract.View {
         presenter = MainPresenter(this)
     }
 
-    override fun getContext(): Context {
-        return applicationContext
-    }
+    override fun getContext(): Context? = this
 
     /**
      * Handle back button action
