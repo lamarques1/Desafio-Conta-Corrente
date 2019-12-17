@@ -50,17 +50,15 @@ class LoginView : BaseActivity(), LoginContract.View {
             presenter.authUser(etEmail.text.toString().trim(), etPassword.text.toString().trim())
         }
 
-        etEmail.setOnFocusChangeListener { v, _ ->
-            if (!v.hasFocus()) {
-                val imm  = applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(v.windowToken, 0)
+        etEmail.setOnFocusChangeListener { view, hasFocus ->
+            if (!hasFocus) {
+                hideKeyboard(view)
             }
         }
 
-        etPassword.setOnFocusChangeListener { v, _ ->
-            if (!v.hasFocus()) {
-                val imm  = applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(v.windowToken, 0)
+        etPassword.setOnFocusChangeListener { view, hasFocus ->
+            if (!hasFocus) {
+                hideKeyboard(view)
             }
         }
     }
@@ -69,10 +67,11 @@ class LoginView : BaseActivity(), LoginContract.View {
      * Start transactional activity with user email
      */
     override fun authUser() {
-        val homeIntent = Intent(this, MainActivity::class.java)
-        homeIntent.putExtra("email", etEmail.text.toString())
-        homeIntent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
-        homeIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        val homeIntent = Intent(this, MainActivity::class.java).apply {
+            putExtra("email", etEmail.text.toString())
+            flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        }
         startActivity(homeIntent)
     }
 

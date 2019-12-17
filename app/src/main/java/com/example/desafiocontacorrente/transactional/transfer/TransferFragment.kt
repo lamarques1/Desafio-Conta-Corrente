@@ -71,17 +71,15 @@ class TransferFragment : BaseFragment(), TransferContract.View {
             presenter.confirmData(etEmail.text.toString(), etValue.text.toString())
         }
 
-        etEmail.setOnFocusChangeListener { v, _ ->
-            if (!v.hasFocus()) {
-                val imm  = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(v.windowToken, 0)
+        etEmail.setOnFocusChangeListener { view, hasFocus ->
+            if (!hasFocus) {
+                hideKeyboard(view)
             }
         }
 
-        etValue.setOnFocusChangeListener { v, _ ->
-            if (!v.hasFocus()) {
-                val imm  = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(v.windowToken, 0)
+        etValue.setOnFocusChangeListener { view, hasFocus ->
+            if (!hasFocus) {
+                hideKeyboard(view)
             }
         }
     }

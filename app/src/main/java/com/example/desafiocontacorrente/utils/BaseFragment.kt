@@ -48,10 +48,13 @@ open class BaseFragment : Fragment() {
         }
     }
 
-    open fun changeFragment(fragment: BaseFragment){
+    fun changeFragment(fragment: BaseFragment){
         if (activity is MainActivity) {
             (activity as MainActivity).changeFragment(fragment)
         }
     }
 
+    fun hideKeyboard(view: View?){
+        (activity as MainActivity).hideKeyboard(view)
+    }
 }

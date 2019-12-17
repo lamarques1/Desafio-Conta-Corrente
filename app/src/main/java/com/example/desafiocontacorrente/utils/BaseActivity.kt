@@ -2,6 +2,8 @@ package com.example.desafiocontacorrente.utils
 
 import android.app.AlertDialog
 import android.content.Context
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.desafiocontacorrente.R
 
@@ -18,7 +20,7 @@ open class BaseActivity : AppCompatActivity() {
 
     }
 
-    open fun showExitDialog(context: Context?){
+    fun showExitDialog(context: Context?){
 
         val builder = AlertDialog.Builder(context)
         builder.setTitle(getString(R.string.dialog_exit_title))
@@ -33,5 +35,10 @@ open class BaseActivity : AppCompatActivity() {
 
         val dialog: AlertDialog = builder.create()
         dialog.show()
+    }
+
+    fun hideKeyboard(view: View?){
+        val imm  = applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view?.windowToken, 0)
     }
 }

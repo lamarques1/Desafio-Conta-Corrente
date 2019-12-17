@@ -130,13 +130,12 @@ open class MainActivity : BaseActivity(), MainContract.View {
                 displayErrorMessage(R.string.error_no_connection)
 
             }else{
-                val fragmentTransaction = fragmentManager.beginTransaction()
-
-                fragmentTransaction.replace(fragmentContainer.id, fragment)
-                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                fragmentTransaction.addToBackStack(null)
+                val fragmentTransaction = fragmentManager.beginTransaction().let {
+                    it.replace(fragmentContainer.id, fragment)
+                    it.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    it.addToBackStack(null)
+                }
                 fragmentTransaction.commit()
-
             }
         }
     }
@@ -199,4 +198,6 @@ open class MainActivity : BaseActivity(), MainContract.View {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 }
