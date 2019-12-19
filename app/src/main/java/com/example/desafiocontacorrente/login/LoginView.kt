@@ -3,14 +3,12 @@ package com.example.desafiocontacorrente.login
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.desafiocontacorrente.R
 import com.example.desafiocontacorrente.transactional.MainActivity
 import com.example.desafiocontacorrente.utils.BaseActivity
-import java.util.*
 
 class LoginView : BaseActivity(), LoginContract.View {
 
@@ -43,7 +41,8 @@ class LoginView : BaseActivity(), LoginContract.View {
     }
 
     /**
-     * When button tapped, call presenter to authenticate login.
+     * ClickListener: When button tapped, call presenter to authenticate login.
+     * OnFocusChangeListeners: When tapping on background view, hide the keyboard
      */
     override fun initListeners() {
         btnLogin.setOnClickListener {

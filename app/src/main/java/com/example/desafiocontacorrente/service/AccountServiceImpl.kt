@@ -7,10 +7,9 @@ import com.example.desafiocontacorrente.model.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.Exception
 
 class AccountServiceImpl : AccountServiceApi{
-    val mRetrofit: RetrofitEndpoint
+    private val mRetrofit: RetrofitEndpoint
         get() = RetrofitConfig().getClient().create(RetrofitEndpoint::class.java)
 
     override fun validateUser(

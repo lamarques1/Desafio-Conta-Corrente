@@ -54,5 +54,6 @@
     <string name="dialog_neutral">VOLTAR</string>
     <string name="open_drawer">Abrir</string>
     <string name="close_drawer">Fechar</string>
+    <string name="error_invalid_account">Conta inválida!</string>
 
 </resources>

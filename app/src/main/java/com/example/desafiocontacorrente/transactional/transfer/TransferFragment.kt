@@ -4,15 +4,13 @@ package com.example.desafiocontacorrente.transactional.transfer
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-
+import androidx.fragment.app.Fragment
 import com.example.desafiocontacorrente.R
 import com.example.desafiocontacorrente.transactional.MainActivity
 import com.example.desafiocontacorrente.transactional.home.HomeFragment
@@ -66,6 +64,10 @@ class TransferFragment : BaseFragment(), TransferContract.View {
         btnTransfer = view.findViewById(R.id.btnTransfer)
     }
 
+    /**
+     * ClickListener: When button tapped, call presenter to authenticate login.
+     * OnFocusChangeListeners: When tapping on background view, hide the keyboard
+     */
     override fun initListeners() {
         btnTransfer.setOnClickListener {
             presenter.confirmData(etEmail.text.toString(), etValue.text.toString())

@@ -2,6 +2,7 @@ package com.example.desafiocontacorrente.utils
 
 import android.app.AlertDialog
 import android.content.Context
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +18,7 @@ open class BaseActivity : AppCompatActivity() {
         if (count != 0) {
             supportFragmentManager.popBackStack()
         }
-
+        super.onBackPressed()
     }
 
     fun showExitDialog(context: Context?){
@@ -32,7 +33,6 @@ open class BaseActivity : AppCompatActivity() {
         builder.setNegativeButton(getString(R.string.dialog_no)){ dialog, _ ->
             dialog.dismiss()
         }
-
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }

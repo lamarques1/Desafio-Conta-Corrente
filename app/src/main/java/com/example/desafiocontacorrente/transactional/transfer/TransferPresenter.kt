@@ -64,6 +64,8 @@ class TransferPresenter(val view: TransferContract.View): TransferContract.Prese
 
             if(!Connection().isConnected(view.getContext())){
                 view.displayErrorMessage(R.string.error_no_connection)
+            }else if (userFrom.id == userTo?.id){
+                view.displayErrorMessage(R.string.error_invalid_account)
             }else{
                 webClient.transfer(userFrom.id,
                     userTo?.id!!,
