@@ -196,7 +196,6 @@ open class MainActivity : BaseActivity(), MainContract.View {
                 }
             }
 
-
         }
         return super.onOptionsItemSelected(item)
     }

@@ -9,7 +9,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AccountServiceImpl : AccountServiceApi{
-    private val mRetrofit: RetrofitEndpoint
+    val mRetrofit: RetrofitEndpoint
         get() = RetrofitConfig().getClient().create(RetrofitEndpoint::class.java)
 
     override fun validateUser(
